@@ -45,7 +45,7 @@ public class Main {
             Class.forName("org.apache.derby.jdbc.ClientDriver");
             // Conexión con la base de datos
             Connection conn = DriverManager.getConnection("jdbc:derby://localhost:1527/sample", "app", "app");
-            // Configuración del informe y salida estándar
+            // Configuración del informe y salida 
             JasperPrint jasperPrint = JasperFillManager.fillReport(jasperReport, params, conn);
             JasperExportManager.exportReportToHtmlFile(jasperPrint, reportOutHTML);
             JasperViewer.viewReport(jasperPrint);
