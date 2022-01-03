@@ -1,0 +1,119 @@
+<?xml version="1.0"?>
+<!DOCTYPE jasperReport
+    PUBLIC "-//JasperReport//DTD Report Design//EN"
+    "http://jasperreports.sourceforge.net/dtds/jasperreport.dtd">
+    
+<jasperReport name="DatosClientes">
+    
+    <!-- Datos de la cabecera del informe -->
+    <parameter name="reportTitle" class="java.lang.String"/>
+    <parameter name="author" class="java.lang.String"/>
+    <parameter name="startDate" class="java.lang.String"/>
+    
+    <!-- Sentencia contra la base de datos -->
+    <queryString>
+        <![CDATA[SELECT CUSTOMER_ID, NAME, PHONE, FAX, EMAIL FROM CUSTOMER ORDER BY CUSTOMER_ID]]>
+    </queryString>
+    
+    <!-- Fila cabecera del informe -->
+    <field name="CUSTOMER_ID" class="java.lang.Integer"/>
+    <field name="NAME" class="java.lang.String"/>
+    <field name="PHONE" class="java.lang.String"/>
+    <field name="FAX" class="java.lang.String"/>
+    <field name="EMAIL" class="java.lang.String"/>
+    
+    <!-- Título del informe -->
+    <title>
+        <band height="60">
+            <textField>
+                <reportElement x="0" y="10" width="500" height="40"/>
+                <textElement textAlignment="Center">
+                    <font size="24"/>
+                </textElement>
+                <textFieldExpression class="java.lang.String">
+                    <![CDATA[$P{reportTitle}]]>
+                </textFieldExpression>
+            </textField>
+            <textField>
+                <reportElement x="0" y="40" width="500" height="20"/>
+                <textElement textAlignment="Center"/>
+                <textFieldExpression class="java.lang.String">
+                    <![CDATA["Ejecutado por: " + $P{author} + " el " + $P{startDate}]]>
+                </textFieldExpression>
+            </textField>
+        </band>
+    </title>
+    
+    <!-- Cabecera -->
+    <columnHeader>
+        <band height="30">
+            <rectangle>
+                <reportElement x="0" y="0" width="500" height="25"/>
+                <graphicElement/>
+            </rectangle>
+            <staticText>
+                <reportElement x="5" y="5" width="50" height="15"/>
+                <textElement/>
+                <text><![CDATA[ID]]></text>
+            </staticText>
+            <staticText>
+                <reportElement x="40" y="5" width="150" height="15"/>
+                <text><![CDATA[Nombre]]></text>
+            </staticText>
+            <staticText>
+                <reportElement x="175" y="5" width="150" height="15"/>
+                <text><![CDATA[Teléfono]]></text>
+            </staticText>
+            <staticText>
+                <reportElement x="270" y="5" width="150" height="15"/>
+                <text><![CDATA[Fax]]></text>
+            </staticText>
+            <staticText>
+                <reportElement x="350" y="5" width="300" height="15"/>
+                <text><![CDATA[Email]]></text>
+            </staticText>
+        </band>
+    </columnHeader>
+    
+    <!-- Filas -->
+    <detail>
+        <band height="20">
+            <textField>
+                <reportElement x="5" y="0" width="50" height="15"/>
+                <textElement/>
+                <textFieldExpression class="java.lang.Integer">
+                    <![CDATA[$F{CUSTOMER_ID}]]>
+                </textFieldExpression>
+            </textField>
+            <textField>
+                <reportElement x="40" y="0" width="150" height="15"/>
+                <textElement/>
+                <textFieldExpression class="java.lang.String">
+                    <![CDATA[$F{NAME}]]>
+                </textFieldExpression>
+            </textField>
+            <textField>
+                <reportElement x="175" y="0" width="255" height="15"/>
+                <textElement/>
+                <textFieldExpression class="java.lang.String">
+                    <![CDATA[$F{PHONE}]]>
+                </textFieldExpression>
+            </textField>
+            <textField>
+                <reportElement x="270" y="0" width="255" height="15"/>
+                <textElement/>
+                <textFieldExpression class="java.lang.String">
+                    <![CDATA[$F{FAX}]]>
+                </textFieldExpression>
+            </textField>
+            <textField>
+                <reportElement x="350" y="0" width="300" height="15"/>
+                <textElement/>
+                <textFieldExpression class="java.lang.String">
+                    <![CDATA[$F{EMAIL}]]>
+                </textFieldExpression>
+            </textField>
+        </band>
+    </detail>
+    
+</jasperReport>
