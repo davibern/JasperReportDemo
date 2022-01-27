@@ -1,0 +1,75 @@
+<?xml version="1.0"?>
+<!DOCTYPE jasperReport
+    PUBLIC "-//JasperReport//DTD Report Design//EN"
+    "http://jasperreports.sourceforge.net/dtds/jasperreport.dtd">
+    
+<jasperReport name="DatosProductos">
+    <parameter name="reportTitle" class="java.lang.String"/>
+    <parameter name="author" class="java.lang.String"/>
+    <parameter name="startDate" class="java.lang.String"/>
+    
+    <queryString>
+        <![CDATA[SELECT PRODUCT_ID, DESCRIPTION FROM PRODUCT ORDER BY PRODUCT_ID]]>
+    </queryString>
+    
+    <field name="PRODUCT_ID" class="java.lang.Integer"/>
+    <field name="DESCRIPTION" class="java.lang.String"/>
+    
+    <title>
+        <band height="60">
+            <textField>
+                <reportElement x="0" y="10" width="500" height="40"/>
+                <textElement textAlignment="Center">
+                    <font size="24"/>
+                </textElement>
+                <textFieldExpression class="java.lang.String">
+                    <![CDATA[$P{reportTitle}]]>
+                </textFieldExpression>
+            </textField>
+            <textField>
+                <reportElement x="0" y="40" width="500" height="20"/>
+                <textElement textAlignment="Center"/>
+                <textFieldExpression class="java.lang.String">
+                    <![CDATA["Ejecutado por: " + $P{author} + " el " + $P{startDate}]]>
+                </textFieldExpression>
+            </textField>
+        </band>
+    </title>
+    
+    <columnHeader>
+        <band height="30">
+            <rectangle>
+                <reportElement x="0" y="0" width="500" height="25"/>
+                <graphicElement/>
+            </rectangle>
+            <staticText>
+                <reportElement x="5" y="5" width="50" height="15"/>
+                <text><![CDATA[ID]]></text>
+            </staticText>
+            <staticText>
+                <reportElement x="175" y="5" width="150" height="15"/>
+                <text><![CDATA[DESCRIPCIÓN]]></text>
+            </staticText>
+        </band>
+    </columnHeader>
+    
+    <detail>
+        <band height="20">
+            <textField>
+                <reportElement x="5" y="0" width="50" height="15"/>
+                <textElement/>
+                <textFieldExpression class="java.lang.Integer">
+                    <![CDATA[$F{PRODUCT_ID}]]>
+                </textFieldExpression>
+            </textField>
+            <textField>
+                <reportElement x="175" y="5" width="50" height="15"/>
+                <textElement/>
+                <textFieldExpression class="java.lang.String">
+                    <![CDATA[$F{DESCRIPTION}]]>
+                </textFieldExpression>
+            </textField>
+        </band>
+    </detail>
+    
+</jasperReport>
