@@ -21,7 +21,7 @@ import net.sf.jasperreports.view.JasperViewer;
  * @author davibern
  * @version 1.0
  */
-public class Main {
+public class MainInformeClientes {
 
     /**
      * @param args the command line arguments
@@ -50,11 +50,11 @@ public class Main {
             JasperExportManager.exportReportToHtmlFile(jasperPrint, reportOutHTML);
             JasperViewer.viewReport(jasperPrint);
         } catch (JRException ex) {
-            Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(MainInformeClientes.class.getName()).log(Level.SEVERE, null, ex);
         } catch (ClassNotFoundException ex) {
-            Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(MainInformeClientes.class.getName()).log(Level.SEVERE, null, ex);
         } catch (SQLException ex) {
-            Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(MainInformeClientes.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
     
